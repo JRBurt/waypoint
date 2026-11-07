@@ -1,0 +1,7 @@
+/*.rdb
+/scratch
+/venv*
+/__pycache__
+
+.configs.json
+.DS_Store
