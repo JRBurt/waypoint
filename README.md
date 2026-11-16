@@ -4,7 +4,7 @@ GeoCaching, caching geo related requests in redis. Cache-aside with TTL, a rate 
 
 ## Why
 
-Geocoding and routing keep showing up as the shared need across a few other projects of mine - a TEU calculator for intermodal shipping, a bike route/commute calculator. Each one ends up needing the same thing: cache provider lookups, respect rate limits, don't let a stampede of concurrent requests hammer the API. Waypoint pulls that into its own service, built deliberately against Redis instead of improvised per-project.
+Geocoding and routing keep showing up as a shared need across a few other projects of mine; a TEU calculator for intermodal shipping, a bike route/commute calculator. Each one ends up needing the same thing: cache provider lookups, respect rate limits, and stampede reduction. Waypoint pulls that into its own service, built deliberately against Redis instead of improvised per-project.
 
 ## Running it locally
 
@@ -23,4 +23,4 @@ Without Docker: `pip install -r requirements.txt`, run a local Redis, then `cd g
 
 ## Stack
 
-Python stdlib (`http.server`), `redis-py`, `requests`. No framework, no ORM, no auth - deliberately minimal so the Redis patterns stay the point.
+Python stdlib (`http.server`), `redis-py`, `requests`. No framework, no ORM, no auth; deliberately minimal so the Redis patterns stay the point.
