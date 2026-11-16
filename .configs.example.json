@@ -1,0 +1,8 @@
+{
+    "mapbox": {
+        "token": "ENTER_MAPBOX_TOKEN_HERE"
+    },
+    "ors": {
+        "token": "ENTER_ORS_TOKEN_HERE"
+    }
+}

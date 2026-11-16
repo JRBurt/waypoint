@@ -1,5 +1,5 @@
 import re
-import hashlib
+
 
 def get_in(in_dictionary: dict, path: list):
     for p in path:
@@ -9,8 +9,5 @@ def get_in(in_dictionary: dict, path: list):
     return in_dictionary
 
 
-def slugify(value):
-    modified_input = value.lower()
-    return re.sub(r"[^a-zA-Z0-9 ]", "", modified_input)
-
-
+def slugify(value: str) -> str:
+    return re.sub(r"[^a-zA-Z0-9 ]", "", value.lower())

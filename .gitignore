@@ -1,7 +1,8 @@
 /*.rdb
 /scratch
 /venv*
-/__pycache__
+/__pycache__*
 
 .configs.json
+.secrets.json
 .DS_Store
