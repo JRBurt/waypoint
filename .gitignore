@@ -1,7 +1,8 @@
 /*.rdb
 /scratch
 /venv*
-/__pycache__*
+__pycache__/
+*.pyc
 
 .configs.json
 .secrets.json

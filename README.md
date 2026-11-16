@@ -1,6 +1,6 @@
 # Waypoint
 
-A small Redis-backed service that sits in front of geocoding providers (Mapbox, OpenRouteService). Built to learn Redis properly: cache-aside with TTL, a rate limiter shared across callers, and a distributed lock to stop cache-stampedes when a hot key expires under load.
+GeoCaching, caching geo related requests in redis. Cache-aside with TTL, a rate limiter shared across callers, and a distributed lock to stop cache-stampedes when a hot key expires under load.
 
 ## Why
 
@@ -16,10 +16,10 @@ docker-compose up
 Then:
 
 ```
-GET http://localhost:8080/geocode?provider=mapbox&q=900+Washington+Ave,+Golden,+CO
+curl "http://localhost:8080/geocode?provider=mapbox&q=900+Washington+Ave,+Golden,+CO"
 ```
 
-Without Docker: `pip install -r requirements.txt`, run a local Redis, then `python -m server`.
+Without Docker: `pip install -r requirements.txt`, run a local Redis, then `cd geocache && python -m server` (`.configs.json` stays at the repo root either way).
 
 ## Stack
 
