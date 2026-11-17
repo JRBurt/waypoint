@@ -30,15 +30,11 @@ from geocache import ratelimit
 
 class CacheAside:
 
-    def __init__(
-        self, redis_client: redis.Redis, rate_limiter: "ratelimit.RateLimiter"
-    ):
+    def __init__(self, redis_client: redis.Redis, rate_limiter: "ratelimit.RateLimiter"):
         self.redis = redis_client
         self.rate_limiter = rate_limiter
 
-    def maybe_update_and_get(
-        self, provider, search_text: str, skip_cache: bool = False
-    ) -> dict:
+    def maybe_update_and_get(self, provider, search_text: str, skip_cache: bool = False) -> dict:
         if provider.ttl_seconds is None:
             self.rate_limiter.check_and_increment(
                 provider.provider_configuration_id, provider.rate_limit
@@ -57,9 +53,7 @@ class CacheAside:
 
         return self._refill(provider, entity_key, search_text, skip_cache)
 
-    def _refill(
-        self, provider, entity_key: str, search_text: str, skip_cache: bool
-    ) -> dict:
+    def _refill(self, provider, entity_key: str, search_text: str, skip_cache: bool) -> dict:
         lock = self.redis.lock(f"lock:{entity_key}", timeout=10, blocking_timeout=5)
         acquired = lock.acquire(blocking=True)
         if not acquired:

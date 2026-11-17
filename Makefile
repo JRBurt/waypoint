@@ -4,4 +4,4 @@ test:
 	python run_tests.py
 
 lint:
-	black .
+	black .; ruff check .

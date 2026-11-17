@@ -20,9 +20,7 @@ class RateLimiter:
     def __init__(self, redis_client: redis.Redis):
         self.redis = redis_client
 
-    def check_and_increment(
-        self, provider_configuration_id: str, rate_limit: dict
-    ) -> None:
+    def check_and_increment(self, provider_configuration_id: str, rate_limit: dict) -> None:
         if not rate_limit:
             return
 
