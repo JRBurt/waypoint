@@ -25,12 +25,14 @@ import json
 
 import redis
 
-import ratelimit
+from geocache import ratelimit
 
 
 class CacheAside:
 
-    def __init__(self, redis_client: redis.Redis, rate_limiter: "ratelimit.RateLimiter"):
+    def __init__(
+        self, redis_client: redis.Redis, rate_limiter: "ratelimit.RateLimiter"
+    ):
         self.redis = redis_client
         self.rate_limiter = rate_limiter
 
@@ -55,7 +57,9 @@ class CacheAside:
 
         return self._refill(provider, entity_key, search_text, skip_cache)
 
-    def _refill(self, provider, entity_key: str, search_text: str, skip_cache: bool) -> dict:
+    def _refill(
+        self, provider, entity_key: str, search_text: str, skip_cache: bool
+    ) -> dict:
         lock = self.redis.lock(f"lock:{entity_key}", timeout=10, blocking_timeout=5)
         acquired = lock.acquire(blocking=True)
         if not acquired:
@@ -80,6 +84,9 @@ class CacheAside:
             )
             content = provider.get_address_content(search_text)
             self.redis.set(entity_key, json.dumps(content), ex=provider.ttl_seconds)
-            return {"data": content, "meta": {"cache": "BYPASS" if skip_cache else "MISS"}}
+            return {
+                "data": content,
+                "meta": {"cache": "BYPASS" if skip_cache else "MISS"},
+            }
         finally:
             lock.release()

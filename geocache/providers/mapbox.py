@@ -1,5 +1,5 @@
 from .base import BaseProvider
-import utils
+from geocache import utils
 
 
 class MapboxProvider(BaseProvider):

@@ -1,7 +1,7 @@
 import hashlib
 
-import config
-import utils
+from geocache import config
+from geocache import utils
 
 validation_schema = {
     "coordinates": {

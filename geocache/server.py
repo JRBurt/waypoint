@@ -17,10 +17,10 @@ from urllib.parse import urlparse, parse_qs
 
 import redis
 
-import cache
-import config
-import providers
-import ratelimit
+from geocache import cache
+from geocache import config
+from geocache import providers
+from geocache import ratelimit
 
 logger = logging.getLogger(__name__)
 

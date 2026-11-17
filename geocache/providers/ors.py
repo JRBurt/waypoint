@@ -2,7 +2,7 @@
 # provisional, copied from the Mapbox skeleton until their docs are reachable
 # again and the real response shape can be confirmed.
 from .base import BaseProvider
-import utils
+from geocache import utils
 
 
 class OrsProvider(BaseProvider):

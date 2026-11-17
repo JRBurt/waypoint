@@ -4,7 +4,7 @@ python -m config
 
 import json
 import os
-import utils
+from geocache import utils
 import logging
 
 logger = logging.getLogger(__name__)
@@ -19,6 +19,7 @@ YEAR_IN_DAYS = 365
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _REPO_ROOT = os.path.dirname(_HERE)
 _SECRETS_PATH = os.path.join(_REPO_ROOT, ".configs.json")
+
 
 def _load_secrets() -> dict:
     if not os.path.exists(_SECRETS_PATH):
